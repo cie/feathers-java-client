@@ -3,6 +3,7 @@ package com.feathersjs.client;
 import java.util.HashMap;
 
 import com.feathersjs.client.plugins.authentication.AuthResponse;
+import com.feathersjs.client.plugins.authentication.AuthenticationRequest;
 import com.feathersjs.client.plugins.authentication.FeathersAuthentication;
 import com.feathersjs.client.plugins.authentication.FeathersAuthenticationConfiguration;
 import com.feathersjs.client.plugins.providers.FeathersSocketClient;
@@ -20,6 +21,7 @@ public class Feathers {
     private IFeathersProvider mProvider;
     private IProviderConfiguration mProviderConfiguration;
     private FeathersAuthentication mFeathersAuthentication;
+	private AuthenticationRequest mAuthenticationRequest;
 
     public synchronized static Feathers getInstance() {
         if (instance == null) {
@@ -84,12 +86,16 @@ public class Feathers {
     public String getBaseUrl() {
         return mBaseUrl;
     }
+    
+    public void authenticate(AuthenticationRequest request) {
+    	mAuthenticationRequest = request;
+    }
 
     public IFeathersProvider getProvider() {
 
         if (mProvider == null) {
             //if (mProviderConfiguration instanceof FeathersSocketIO) {
-			mProvider = new FeathersSocketClient(this, mFeathersAuthentication, null);
+			mProvider = new FeathersSocketClient(this, mAuthenticationRequest, null);
             //} else {
                 // Use rest by default
                 //mProvider = new FeathersRestClient(this, mFeathersAuthentication, null);

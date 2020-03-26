@@ -2,6 +2,7 @@ package com.feathersjs.client.plugins.authentication;
 
 import com.feathersjs.client.plugins.storage.IStorageProvider;
 
+@Deprecated
 public class AuthenticationOptions {
     public String cookie;
     public String tokenKey;

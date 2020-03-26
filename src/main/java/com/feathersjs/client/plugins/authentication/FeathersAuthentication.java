@@ -14,6 +14,7 @@ import com.feathersjs.client.utilities.Serialization;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@Deprecated
 public class FeathersAuthentication extends IFeathersConfigurable {
 
 	private Feathers mApp;

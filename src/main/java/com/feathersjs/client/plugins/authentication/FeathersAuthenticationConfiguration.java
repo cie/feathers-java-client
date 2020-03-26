@@ -1,5 +1,6 @@
 package com.feathersjs.client.plugins.authentication;
 
+@Deprecated
 public class FeathersAuthenticationConfiguration {
     private final AuthenticationOptions mOptions;
 
